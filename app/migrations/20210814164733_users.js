@@ -6,7 +6,7 @@ exports.up = function (knex) {
 		tb.string(`password`)
 		tb.boolean('is_admin').defaultTo(false)
 		tb.timestamp('last_logged_in')
-		tb.boolean('is_active')
+		tb.boolean('is_active').defaultTo(false)
 		tb.timestamps()
 		tb.timestamp(`deleted_at`).defaultTo(null)
 	})

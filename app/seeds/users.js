@@ -7,9 +7,10 @@ exports.seed = async knex => {
 	await knex('users').del()
 	return await knex('users').insert({
 		username: 'admin',
-		email: 'som.dhingra@yahoo.in',
-		password: await bcrypt.hash('abc123', 5),
+		email: 'admin@admin.com',
+		password: await bcrypt.hash('admin123', 5),
 		is_admin: true,
-		created_at: moment()
+		created_at: moment(),
+		is_active: true
 	})
 }
