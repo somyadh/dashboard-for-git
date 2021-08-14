@@ -12,6 +12,4 @@ routes.get('/', (req, res) => {
 	res.send('Hello World!')
 })
 
-routes.get('/temperature/convert', TemperatureConvert)
-
 export default router
