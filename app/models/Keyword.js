@@ -28,8 +28,10 @@ class Keyword extends softDelete({
 					from: 'keywords.id',
 					through: {
 						from: 'user_keyword_map.keyword_id',
-						to: 'user_keyword_map.user_id'
+						to: 'user_keyword_map.user_id',
+						extra: ['created_at', 'searched_on']
 					},
+
 					to: 'users.id'
 				}
 			}
