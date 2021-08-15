@@ -4,7 +4,7 @@ import { UserService } from '../../services/UserServices'
 
 export const addUser = async (req, res) => {
 	let user = req.body
-	if (!user || !user.username || !user.password) return Respond.err(res, Errors.MISSING_PARAMS)
+	if (!user || !user.username || !user.password) return Respond.err(res, 'MISSING_PARAMS')
 
 	return await knex.transaction(async trx => {
 		let result = await UserService.addUser(user, trx)
@@ -25,7 +25,7 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
 	let { admin_id, user_id, update } = req.body
-	if (!user_id || !update) return Respond.err(res, Errors.MISSING_PARAMS)
+	if (!user_id || !update) return Respond.err(res, 'MISSING_PARAMS')
 
 	return await knex.transaction(async trx => {
 		let result = await UserService.updateUser(admin_id, user_id, update, trx)

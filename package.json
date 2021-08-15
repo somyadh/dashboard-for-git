@@ -11,6 +11,7 @@
 		"@babel/plugin-proposal-class-properties": "^7.10.4",
 		"@babel/plugin-transform-runtime": "^7.10.4",
 		"@babel/preset-env": "^7.14.2",
+		"@octokit/rest": "^18.9.0",
 		"bcrypt": "^5.0.1",
 		"cors": "^2.8.5",
 		"cross-env": "^7.0.3",
