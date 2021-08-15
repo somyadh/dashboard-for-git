@@ -13,9 +13,9 @@ export class SearchService {
 	static searchByRepo = async (user_id, keywords, trx = null) => {
 		let result = {}
 		let user = (await UserService.getUser(user_id, trx))[0]
-		if (user.code) return result
+		if (!user) return { code: 'USER_NOT_FOUND' }
 
-        //process keywords to create format as per required by GIT API
+		//process keywords to create format as per required by GIT API
 		let processed_keyword = this._keywordProcessor(keywords)
 		if (processed_keyword.length === 0) return { code: 'KEYWORDS_LENGTH_EXCEEDED' }
 		let q = 'q=' + processed_keyword
@@ -24,9 +24,9 @@ export class SearchService {
 			q
 		})
 
-        //process the outpur from GIT API as required
+		//process the outpur from GIT API as required
 		result = this._SearchAPIResponseFormatter(data.data)
-        console.log(result)
+
 		if (result.length > 0) {
 			await KeywordService.mapKeywordToUser(keywords, user.id, trx)
 		}

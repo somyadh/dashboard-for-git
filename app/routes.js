@@ -4,6 +4,7 @@ import passport from 'passport'
 import * as UserController from '../app/controllers/v1/UserController'
 import * as SearchController from '../app/controllers/v1/SearchController'
 import * as AccessController from './controllers/v1/AccessController'
+import * as ReportController from './controllers/v1/ReportController'
 import Respond from './helpers/Respond'
 
 const router = express.Router()
@@ -40,4 +41,6 @@ routes.get('/user/conditions', UserController.getUsersByCondition)
 //search
 routes.post('/search', SearchController.searchByRepo)
 
+//report
+routes.get('/report/by-user', ReportController.userReport)
 export default router

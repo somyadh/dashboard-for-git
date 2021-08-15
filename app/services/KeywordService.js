@@ -83,4 +83,18 @@ export class KeywordService {
 			.relate({ id: user_id, created_at: moment(), searched_on: moment() })
 			.debug()
 	}
+
+	/**
+	 * Get keyword by user
+	 * @param { keywords }  list of keywords
+	 * @param { object } trx
+	 */
+	static getKeywordByUser = async (user_id, trx = null) => {
+		let result = []
+
+		let temp = await UserKeywordMap.query(trx).where('user_id', user_id).withGraphFetched('keyword')
+
+		result = temp
+		return result
+	}
 }
