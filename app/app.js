@@ -2,6 +2,8 @@ import { config } from 'dotenv'
 import cors from 'cors'
 import express, { json, urlencoded } from 'express'
 import routes from './routes'
+import passport from 'passport'
+import Authenticator from './middlewares/authenticator'
 
 /** Load environment variables. */
 config()
@@ -20,5 +22,8 @@ app.options('*', cors())
 
 /** Configure api routing strategies. */
 app.use('/', routes)
+
+app.use(passport.initialize())
+Authenticator.init()
 
 export default app
